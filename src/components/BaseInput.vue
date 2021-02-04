@@ -1,13 +1,23 @@
 <template>
   <div>
-      <input 
+    <input
+      v-if="type === 'submit'"
+      :type="type"
+      :id="id"
+      :value="value"
+      name="name"
+      @click="$emit('click')"
+    />
+
+    <input
+      v-else
       :type="type"
       :id="id"
       :placeholder="placeholder"
       :value="value"
       name="name"
       @input="$emit('input', $event.target.value)"
-      >
+    />
   </div>
 </template>
 

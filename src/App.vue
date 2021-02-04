@@ -6,12 +6,10 @@
     <ul>
       <CustomForm @sendForm="search" />
 
-
       <div v-if="quote != ''" class="quote">
         <h3>quote:</h3>
         <p>{{ quote }}</p>
-        <button @click="quote=''" >Show List</button>
-
+        <button @click="quote = ''">Show List</button>
       </div>
       <div v-else class="list">
         <h3>Categories:</h3>
@@ -38,7 +36,7 @@ export default {
   data() {
     return {
       categories: [],
-      quote: '',
+      quote: ""
     };
   },
   mounted() {
@@ -59,18 +57,17 @@ export default {
   methods: {
     search(text) {
       console.log(text);
-          this.axios
-      .get(`https://api.chucknorris.io/jokes/random?category=${text}`)
-      .then(response => {
-        // handle success
-        this.quote = response.data.value;
-        // console.log(this.categories);
-      })
-      .catch(error => {
-        // handle error
-        console.log(error);
-      });
-
+      this.axios
+        .get(`https://api.chucknorris.io/jokes/random?category=${text}`)
+        .then(response => {
+          // handle success
+          this.quote = response.data.value;
+          // console.log(this.categories);
+        })
+        .catch(error => {
+          // handle error
+          console.log(error);
+        });
     }
   }
 };

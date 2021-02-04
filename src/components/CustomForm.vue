@@ -4,14 +4,14 @@
     <form action="" v-on:submit.prevent>
       <!-- <input type="text" v-model="searchText" /> -->
       <BaseInput
-      type="text"
-      placeholder="inserisci un nome"
-      :value="searchText"
-      @input="searchText=$event"
-      name="name"
-    />
-        
-      <input type="submit" value="cerca" @click="sendSearch" />
+        type="text"
+        placeholder="inserisci un nome"
+        :value="searchText"
+        @input="searchText = $event"
+        name="name"
+      />
+      <BaseInput type="submit" value="search" @click="sendSearch" name="name" />
+      <!-- <input type="submit" value="cerca" @click="sendSearch" /> -->
     </form>
   </div>
 </template>
@@ -20,8 +20,8 @@
 import BaseInput from "./BaseInput";
 export default {
   name: "CustomFrom",
-  components:{
-      BaseInput
+  components: {
+    BaseInput
   },
   data() {
     return {
@@ -32,7 +32,7 @@ export default {
     sendSearch() {
       this.$emit("sendForm", this.searchText);
       this.searchText = "";
-    },
+    }
   }
 };
 </script>
